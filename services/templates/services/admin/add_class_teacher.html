@@ -1,0 +1,133 @@
+{% extends 'school/admin/base.html' %}
+{% load staticfiles %}
+{% block title %} Add Class Teacher {% endblock %}
+{% block content %}
+
+<div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">   
+        <div class="container-fluid" id="container-wrapper">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <h1 class="h3 mb-0 text-gray-800"> </h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Add Class Teacher</li>
+                </ol>
+            </div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {% if message.tags %} <h5><i class="icon fa fa-check"></i> {{ message }}</h5>{% endif %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="row">
+                <!-- DataTable with Hover -->
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold ">Add Class Teacher</h6>
+                                </div>                              
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card-header flex-row justify-content-between" style="text-align: right;">
+                                    <i class="fas fa-hand-point-right"></i> <a class="collapse-item" href="/teacher-list/">Teacher List</a>
+                                </div>  
+                            </div>
+                        </div>
+                        <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                            <table class="table table-striped table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td> Teacher </td>
+                                        <td>
+                                            <select name="teacher_name" class="form-control select" required=""> 
+                                                {% for data in  teacher_list%}
+                                                    <option value="{{data.id}}">{{ data.employee_name}}</option> 
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td> Class </td>
+                                        <td>
+                                            <select name="class_name" id="class_id" class="form-control select" required=""> 
+                                                {% for data in  class_list%}
+                                                    <option value="{{data.id}}">{{data.class_name}}</option> 
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> Version </td>
+                                        <td>
+                                            <select name="Version" class="form-control select" required=""> 
+                                                <option value="1">Bangla Medium</option> 
+                                                <option value="2">English Version</option> 
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td> Shift </td>
+                                        <td>
+                                            <select name="shift_name" class="form-control select" required=""> 
+                                                {% for data in  shift_list%}
+                                                    <option value="{{ data.id }}">{{data.shift_name }}</option> 
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> Section </td>
+                                        <td>
+                                            <select name="section_name" class="form-control select" required=""> 
+                                                {% for data in  section_list%}
+                                                    <option value="{{ data.id }}">{{data.section_name }}</option> 
+                                                {% endfor %} 
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td id="td_group_label" class="label_center">Group</td>
+                                        <td id="tr_group_subject">
+                                            <select class="form-control select" name="group_type">      
+                                                {% for data in  group_lsit%}
+                                                    <option value="{{ data.id }}">{{data.group_type }}</option> 
+                                                {% endfor %} 
+                                            </select>
+                                        </td>  
+                                    </tr>
+                                    <tr>
+                                        <td> Year </td>
+                                        <td>
+                                            <select name="running_year" class="form-control select" required=""> 
+                                                {% for data in  running_year%}
+                                                    <option value="{{ data.id }}">{{data.year }}</option> 
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <td>
+                                            <input type="submit" value="Save" class="btn btn-success">
+                                            <button type="reset" class="btn btn-danger">Reset</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load data_load %}
+    <title>{% block title %}  {% endblock %} </title>
+    {% for data in school_details|school|slice:"1" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'services/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'services/css/bootstrap-grid.css' %}">
+    <link rel="stylesheet" href="{% static 'services/css/bootstrap-reboot.css' %}">
+    <link rel="stylesheet" href="{% static 'services/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'services/css/ihover.css' %}">
+    <link rel="stylesheet" href="{% static 'services/css/style.css' %}">
+
+    <!-- Owl Carusel -->
+    <link rel="stylesheet" href="{% static 'services/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'services/css/owl.theme.default.min.css' %}">
+
+</head>
+<body>
+    <header>
+        <div class="ak_top_header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2 social_menu">
+                        <ul style="float: left;">
+                            <li><a ><span style="color: #fff581;font-weight: bold; font-size: 15px;"  id="time"></span></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-8 top_header_pull">
+                        <ul>
+                            <li> <p>{{ data.slugan }}</p> </li>
+                            <li> <p><i class="fa fa-phone"></i> Contact Us:{{ data.mobile }}</p> </li>
+                            <li> <p><i class="fa fa-envelope-o"></i> Email:{{ data.email }}</p> </li>
+                            <li> <a href="/login/">Login</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2 social_menu">
+                        <ul>
+                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fa fa-youtube"></i></a></li>
+                        </ul>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        
+        <div class="ak_main_nav_pull" id="navbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="site_logo">
+                            <a href="/"><img src="/static/services/media/{{ data.logo }}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="site_menu">
+                            <ul style="padding-left: 71px;">
+                                <li><a href="/" class="active_menu">Home</a></li>
+                                 
+                                <li><a href="#">Association Info <i class="fa fa-angle-down"></i></a>
+                                    <ul>
+                                        <li><a href="/our-histoy/">History</a></li>
+                                        <li><a href="/associations/committee/">Management Committee</a></li>
+                                        <li><a href="/all-member/">All Member</a></li>
+                                        <li><a href="/president-message/">President Message</a></li>
+                                        <li><a href="/generalsecretary-message/">General Secretary Message</a></li>
+                                        <li><a href="/at-glance/">At a Glance</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Academic Info <i class="fa fa-angle-down"></i></a>
+                                    <ul>
+                                        <li><a href="/about-school/">About School</a></li>
+                                        <li><a href="/teacher-info/">Teacher's Info</a></li>
+                                        <li><a href="/student-info/">Student's Info</a></li>
+                                        <li><a href="/chairman-message/">Chairman Message</a></li>
+                                        <li><a href="/principal-message/">Principal's Message</a></li>
+                                        <li><a href="/institute/lab/">Result</a></li>  
+                                        <li><a href="/institute/lab/">Notice Board</a></li>  
+                                    </ul>
+                                </li>
+                               
+                                <li><a href="">Our Work<i class="fa fa-angle-down"></i></a>
+                                    <ul>
+                                        <li><a href="/work-gallary">Gallery</a></li>
+                                    </ul>
+                                </li>
+                                
+                                <li><a href="">Gallery <i class="fa fa-angle-down"></i></a>
+                                    <ul>
+                                        <li><a href="/gallery/photo-gallery/">Photo Gallery </a></li>
+                                        <li><a href="/gallery/video-gallery/">Video Gallery  </a></li>
+                                    </ul> 
+                                </li>
+                                <li><a href="">Notice & Event <i class="fa fa-angle-down"></i></a>
+                                    <ul>
+                                        <li><a href="/notice-event/">Upcoming Event</a></li>
+                                        <li><a href="/previous-events/">Previous Event</a></li>
+                                    </ul> 
+                                </li>
+                                <li><a href="/about-us/">About Us</a></li>
+                                <li><a href="/contactus/">Contact</a></li>
+                                {% comment %} {% if request.session.employee_id %}
+                                    <li><a href="/dashboard/">Dashboard</a></li>
+                                {% else %} {% endcomment %}
+                                <li><a href="/user-registation/">Registration</a></li>
+                                {% comment %} {% endif %} {% endcomment %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% comment %} <div class="col-sm-1">
+                        <div class="site_menu">
+                            <ul style="padding-left:10px;">
+                                
+                            </ul>
+                        </div>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    {% block content %}
+
+    {% endblock %}
+    
+   
+    <footer>
+        <p>© Copyright 2022 || Developed by <a href="#">Joshef Hossain Bappy|<strong> 2012</strong></a></p>
+    </footer>
+    
+    
+        <script src="{% static 'services/js/jquery.min.js' %}"></script>
+        <script src="{% static 'services/js/bootstrap.js' %}"></script>
+        <script src="{% static 'services/js/owl.carousel.min.js' %}"></script>
+        <script> 
+            $(document).ready(function() {
+                $("#owl-demo").owlCarousel({
+                    autoPlay: 3000, //Set AutoPlay to 3 seconds
+                    items : 5,
+                    itemsDesktop : [1199,3],
+                    itemsDesktopSmall : [979,3],
+                    autoplay:true,
+                    autoplayTimeout:3000,
+                    autoplayHoverPause:true
+                });
+
+            });
+
+            {% comment %} Live Time {% endcomment %}
+            $(document).ready(function() {
+                displayClock();
+            });
+            
+            function displayClock(){
+                var display = new Date().toLocaleTimeString();
+                $("#time").html(display);
+                setTimeout(displayClock, 1000); 
+            }
+        </script>
+        
+        <script>
+            window.onscroll = function() {myFunction()};
+            
+            var navbar = document.getElementById("navbar");
+            var sticky = navbar.offsetTop;
+            
+            function myFunction() {
+                if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+                } else {
+                navbar.classList.remove("sticky");
+                }
+            }
+            $(".site_menu ul li").hover(function(){
+                $(this).find('ul').stop('ul').slideToggle(200);
+            });
+        </script>
+    </body>
+    {% endfor %}
+    </html>

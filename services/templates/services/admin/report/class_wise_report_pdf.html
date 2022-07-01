@@ -1,0 +1,78 @@
+<html>
+     <head>
+         <title>Class Wise Report</title>
+         <meta charset="utf-8" />
+     </head>
+     <body>
+      <div class='wrapper'> 
+        <table style="background-color: #eee;">
+            <tr>
+                <td style="width:20%;">
+                    <center>
+                        <img style="height: 80px; width:80px;margin:5px;" src="http://127.0.0.1:8000/static/school/media/{{ school_info.logo }}">
+                    </center>
+                </td>
+                <td style="width:85%; margin-left:-90px;">
+                    <h1 style="margin:0px;text-align:center;padding-top:30px;font-size:24px;">{{school_info.school_name}}</h1>
+                    <h4 style="margin:0px;text-align:center;font-size:17px;">{{school_info.address}}</h4>
+                    <h4 style="margin:0px;text-align:center;padding-bottom:7px;font-size:16px;"><u>Class Wise Report - {% now "DATETIME_FORMAT" %}</u></h4>
+                </td>
+            </tr>
+        </table>
+       
+        {% for st in class_wise_report|slice:"1" %}
+            <table width="100%" style="margin-top:10px;padding-top:3px;boder: 1px solid #ccc">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;padding-left:3px;"> Class : {{ st.class_name }}</th>
+                        <th style="text-align:left;padding-left:3px;"> Shift : {{ st.shift_name }}</th>
+                    </tr>
+                </thead>
+            </table>
+        {% endfor %}  
+
+        <table border="0.5" width="100%" style="margin-top:10px">
+            <thead>
+                <tr>
+                    <th style="width:40px;text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">SL</th>
+                    <th style="font-size:9px;padding-top:3px;padding-left:3px;background-color:#ddd;text-align:left;">ST ID</th>
+                    <th style="text-align:left;font-size:9px;padding:3px 0px 0px 3px;background-color:#ddd;">ST Name</th>
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">Roll</th>       
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">Bangla</th>                                       
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">Bangla 2nd</th>
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">English</th>
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">English 2nd</th>
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">Math.</th>
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">General Science</th>
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">Bangladesh Global</th>
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">Islamic Studies</th>
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">Hindu Studies</th>
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">ICT</th>
+                    <th style="text-align:center;font-size:9px;padding-top:3px;background-color:#ddd;">Agriculture</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in class_wise_report %}
+                    <tr>
+                        <td style="text-align:center;font-size:9px;padding-top:3px;"> {{ forloop.counter }} </td>
+                        <td style="text-align:left;font-size:9px;padding-top:3px; padding-left:3px;"> {{ data.student.student_id }} </td>
+                        <td style="text-align:left;font-size:9px;padding:3px 0px 0px 3px"> {{ data.student.st_first_name }} </td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px"> {{ data.student.st_roll }} </td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px">{{ data.bangla }}</td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px">{{ data.bangla_2nd }} </td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px">{{ data.english }} </td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px">{{ data.english_2nd }} </td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px">{{ data.mathematics }} </td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px">{{ data.general_science }} </td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px">{{ data.bangladesh_global_studies }} </td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px">{{ data.islamic_studies }} </td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px">{{ data.hindu_studies }} </td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px">{{ data.ict }} </td>
+                        <td style="text-align:center;font-size:9px;padding-top:3px">{{ data.agriculture_studies }} </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      </div>
+     </body>
+ </html>

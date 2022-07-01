@@ -1,0 +1,172 @@
+{% extends 'services/base.html' %}
+{% block title %} Result History {% endblock %}
+{% load static %}
+{% block content %}
+<style>
+.text-black {
+    color: #000 !important;
+    font-family: Calibri;
+    font-style: normal;
+    text-align: center;
+}
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+}
+.table-bordered {
+    border: 1px solid #dddddd;
+    border-collapse: separate;
+    border-left: 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.ataglace table th {
+    background-color: #FF0000;
+    font-family: 'Benga_Regular' !important;
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+}
+</style>
+
+<div class="single_page_bg">
+    <!-- Section: inner-header -->
+     <section class="inner-header divider layer-overlay overlay-theme-colored-7"  style="background-image: url(/static/school/images/background.png);">
+        <div class="container">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="text-theme-colored2 font-36">Result History</h1>
+                        <ol class="breadcrumb text-left mt-10 white">
+                            <li><a href="/">Home</a></li>
+                            <li class="active">Result History</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: About -->
+    <section>
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-12">
+                <h3 class="text-black" >এক নজরে ২০০৭ থেকে 2020 পর্যন্ত ব্রাইট ষ্টার হাই স্কুল সাফল্যের চিত্র</h3>
+                    <div class="table-responsive ataglace">
+                        <table class="table table-bordered">
+                            <tbody><tr>
+                                <th>সাল</th>
+                                <th>পরীক্ষার্থীদের সংখ্যা</th>
+                                <th>পাসকৃত পরীক্ষার্থী</th>
+                                <th>পাসের হার</th>
+                                <th>SSC তে ভর্তিকৃত পরীক্ষার্থীর A+ সংখ্যা</th>
+                                <th>HSC তে A+ প্রাপ্ত পরীক্ষার্থীর সংখ্যা</th>
+                                <th>মেধা তালিকায় অবস্থান</th>
+                            </tr>
+                            <tr>
+                                <td>২০০৭</td>
+                                <td>৩৫</td>
+                                <td>৩৫</td>
+                                <td>১০০%</td>
+                                <td>১৬</td>
+                                <td>১৫</td>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <td>২০০৮</td>
+                                <td>২৬৩</td>
+                                <td>২৬৩</td>
+                                <td>১০০%</td>
+                                <td>৯৮</td>
+                                <td>১৫১</td>
+                                <td>২য়</td>
+                            </tr>
+                            <tr>
+                                <td>২০০৯</td>
+                                <td>৩৬৯</td>
+                                <td>৩৬৯</td>
+                                <td>১০০%</td>
+                                <td>১১৯</td>
+                                <td>১৭১</td>
+                                <td>৩য়</td>
+                            </tr>
+                            <tr>
+                                <td>২০১০</td>
+                                <td>৫৩৫</td>
+                                <td>৫৩৬</td>
+                                <td>১০০%</td>
+                                <td>২৬৯</td>
+                                <td>২১৩</td>
+                                <td>১১তম</td>
+                            </tr>
+                            <tr>
+                                <td>২০১১</td>
+                                <td>৯৪১</td>
+                                <td>৯৩৬</td>
+                                <td>৯৯.৪৭%</td>
+                                <td>৩৫১</td>
+                                <td>৪৪১</td>
+                                <td>১৬তম</td>
+                            </tr>
+                            <tr>
+                                <td>২০১২</td>
+                                <td>১০১১</td>
+                                <td>১০৯০</td>
+                                <td>৯৯.৯০%</td>
+                                <td>৪৩৪</td>
+                                <td>৬৪৮</td>
+                                <td>১৩তম</td>
+                            </tr>
+                            <tr>
+                                <td>২০১৩</td>
+                                <td>১৩৪৭</td>
+                                <td>১৩৪৫</td>
+                                <td>৯৯.৮৫%</td>
+                                <td>৪৮৯</td>
+                                <td>৯৪০</td>
+                                <td>৭ম</td>
+                            </tr>
+                            <tr>
+                                <td>২০১৪</td>
+                                <td>৯৫৯</td>
+                                <td>৯৫৯</td>
+                                <td>১০০%</td>
+                                <td>১৮০</td>
+                                <td>৭০২</td>
+                                <td>১০ম</td>
+                            </tr>
+                            <tr>
+                                <td>২০১৫</td>
+                                <td>৯৮৬</td>
+                                <td>৯৮৬</td>
+                                <td>১০০%</td>
+                                <td>২৯৭</td>
+                                <td>৬৮৯</td>
+                                <td>বোর্ড কর্তৃক মেধা তালিকা প্রণয়ন করা হয়নি</td>
+                            </tr>
+                            <tr>
+                                <td>২০১৬</td>
+                                <td>১১২০</td>
+                                <td>১১১১</td>
+                                <td>৯৯.১৬% </td>
+                                <td>৩৩৪</td>
+                                <td>৩৪৮</td>
+                                <td>বোর্ড কর্তৃক মেধা তালিকা প্রণয়ন করা হয়নি</td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %} 

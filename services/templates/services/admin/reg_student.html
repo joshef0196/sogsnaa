@@ -1,0 +1,589 @@
+{% extends 'school/admin/base.html' %}
+{% block title %}Student Registration{% endblock %}
+{% load staticfiles %}
+{% block content %}
+<style>
+    #meImage {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage1 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage2 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage3 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage4 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #bar {visibility:hidden;}
+</style>
+    <!-- Container Fluid-->
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <h1 class="h3 mb-0 text-gray-800"> </h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Student Registration</li>
+            </ol>
+        </div>
+        <div class="col-lg-6">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {% if message.tags %} <h5><i class="icon fa fa-check"></i> {{ message }}</h5>{% endif %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="row">
+            <div class="col-lg-11">
+                <div class="card mb-4">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold ">Student Registration</h6>
+                            </div>                              
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card-header flex-row justify-content-between" style="text-align: right;">
+                                <i class="fas fa-hand-point-right"></i> <a class="collapse-item" href="/student-list/">Student List</a>
+                            </div>  
+                        </div>
+                    </div>
+                    
+                <!-- Form Basic -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Student ID</label>
+                                        <input type="Number" name="student_id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">First Name</label>
+                                        <input type="text" name="st_first_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Last Name</label>
+                                        <input type="text" name="st_last_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <table class="table table-bordered" style="margin-bottom:0px;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label>Student Photo</label>
+                                                    <div class="std_images"> <img style="width: 150px;height: 150px;;" src="{% static 'school/images/blank_image.jpg ' %}" alt="" id="meImage"></div>
+                                                    <input type="file" onchange="show6(this)" name="student_img" id="id_student_img" style="width:120px;overflow: hidden;">
+                                                </td>
+                                                <td>
+                                                    <label>Father Photo</label>
+                                                    <div class="std_images"> <img style="width: 150px;height: 150px;;" src="{% static 'school/images/blank_image.jpg ' %}" alt="" id="meImage1"></div>
+                                                    <input type="file" onchange="show1(this)" name="father_photo" id="id_father_photo" style="width:120px;overflow: hidden;">
+                                                </td>
+                                                <td>
+                                                    <label>Mother Photo</label>
+                                                    <div class="std_images"> <img style="width: 150px;height: 150px;;" src="{% static 'school/images/blank_image.jpg ' %}" alt="" id="meImage2"></div>
+                                                    <input type="file" onchange="show2(this)" name="mother_photo" id="id_mother_photo" style="width:120px;overflow: hidden;">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail1">Student Bangla Name</label>
+                                        <input type="text" name="st_bangla_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Gender</label>
+                                        <select class="form-control" name="st_gender" id="exampleFormControlSelect1" required>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                            <option value="3">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Religion</label>
+                                        <select class="form-control" name="st_religion" id="exampleFormControlSelect1" required>
+                                            <option value="1">Islam</option>
+                                            <option value="2">Christianity</option>
+                                            <option value="3">Hinduism</option>
+                                            <option value="4">Buddhism</option>
+                                            <option value="5">Chinese traditional religion</option>
+                                            <option value="6">African traditional religions</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group" id="simple-date1">
+                                        <label for="simpleDataInput">Date Of Birth</label>
+                                        <div class="input-group date">
+                                            <input type="date" name="date_of_birth" class="form-control" value="01/06/2020" id="simpleDataInput" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Birth Certificate No</label>
+                                        <input type="text" name="birth_certificate_no" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mobile</label>
+                                        <input type="text" name="st_mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" name="st_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Blood Group</label>
+                                        <select class="form-control" name="st_blood_group" id="exampleFormControlSelect1">
+                                            <option value="1">N/A</option>
+                                            <option value="2">A+</option>
+                                            <option value="3">A-</option>
+                                            <option value="4">B+</option>
+                                            <option value="5">B-</option>
+                                            <option value="6">AB+</option>
+                                            <option value="7">AB-</option>
+                                            <option value="8">O+</option>
+                                            <option value="9">O-</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Class Name</label>
+                                        <select class="form-control test" name="class_name" id="exampleFormControlSelect1" required onChange="show('bar', this.options[this.selectedIndex].firstChild.nodeValue)" required>
+                                            
+                                            {% for data in class_list %}
+                                                <option value="{{ data.id }}" onclick="show('bar',true)">{{ data.class_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                               <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Shift Name</label>
+                                        <select class="form-control" name="shift_name" id="exampleFormControlSelect1" required>
+                                            
+                                            {% for data in shift_list %}
+                                                <option value="{{ data.id }}">{{ data.shift_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Section Name</label>
+                                        <select class="form-control" name="section_name" id="exampleFormControlSelect1" required>
+                                            
+                                            {% for data in section_list %}
+                                                <option value="{{ data.id }}">{{ data.section_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" >
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Group Type</label>
+                                        <select class="form-control" name="group_type" id="exampleFormControlSelect1">
+                                            
+                                            {% for data in group_lsit %}
+                                                <option value="{{ data.id }}">{{ data.group_type }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">PSC Roll</label>
+                                        <input type="number" name="psc_roll" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">JSC Roll</label>
+                                        <input type="number" name="jsc_roll" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Session Name</label>
+                                        <select class="form-control" name="session_name" id="exampleFormControlSelect1" required>
+                                            
+                                            {% for data in session_list %}
+                                                <option value="{{ data.id }}">{{ data.session_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Running Year</label>
+                                        <select class="form-control" name="running_year" id="exampleFormControlSelect1" required>
+                                            
+                                            {% for data in running_year %}
+                                                <option value="{{ data.id }}">{{ data.year}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Student Type</label>
+                                        <select class="form-control" name="student_type" id="exampleFormControlSelect1">
+                                            <option value="1">General student</option>
+                                            <option value="2">Full fee scholarship</option>
+                                            <option value="3">Half fee scholarship</option>
+                                            <option value="4">Old student</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Student Roll</label>
+                                        <input type="number" name="st_roll" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Student Reg.</label>
+                                        <input type="number" name="st_reg" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Father Name</label>
+                                        <input type="text" name="father_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Father Bangla Name</label>
+                                        <input type="text" name="father_bangla_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Father Occupation</label>
+                                        <input type="text" name="father_occupation" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Father Mobile</label>
+                                        <input type="number" name="father_mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mother Name</label>
+                                        <input type="text" name="mother_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mother Bangla Name</label>
+                                        <input type="text" name="mother_bangla_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mother Occupation</label>
+                                        <input type="text" name="mother_occupation" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mother Mobile</label>
+                                        <input type="number" name="mother_mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Guardian Name</label>
+                                        <input type="text" name="guardian_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Guardian Relation</label>
+                                        <input type="text" name="guardian_relation" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Guardian Mobile</label>
+                                        <input type="number" name="guardian_mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Guardian Monthly Income</label>
+                                        <input type="number" name="guardian_monthly_income" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Present Address</label>
+                                        <textarea class="form-control" name="present_address" id="exampleFormControlTextarea1" rows="1" ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Parmanent Address</label>
+                                        <textarea class="form-control" name="parmanent_address" id="exampleFormControlTextarea1" rows="1" ></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Previous School Name</label>
+                                        <input type="text" name="previous_school_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Previous School Address</label>
+                                        <textarea class="form-control" name="previous_school_address" id="exampleFormControlTextarea1" rows="1" ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">TC No</label>
+                                        <input type="text" name="tc_no" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4"> 
+                                    <div class="form-group" id="simple-date1">
+                                        <label for="simpleDataInput">TC Date</label>
+                                        <div class="input-group date">
+                                            <input type="date" name="tc_date" class="form-control" value="01/06/2020" id="simpleDataInput">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4"> 
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Fitness Details</label>
+                                        <textarea class="form-control" name="fitness_details" id="exampleFormControlTextarea1" rows="2" ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-lg-4">       
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Student Status</label>
+                                        <select class="form-control" name="student_status" id="exampleFormControlSelect1">
+                                            <option value="1">Active</option>
+                                            <option value="2">Inactive</option>
+                                        </select>
+                                    </div>
+                                    </br>
+                                    <div class="col-lg-4">                                     
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" name="new_student" class="custom-control-input" id="customCheck2">
+                                            <label class="custom-control-label" for="customCheck2" style="width: 190px;">New Student?</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <table class="table table-bordered" style="margin-bottom:0px;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label>Medical Certificate</label>
+                                                    <div class="std_images"> <img style="width: 150px;height: 150px;;" src="{% static 'school/images/blank_image.jpg ' %}" alt="" id="meImage3"></div>
+                                                    <input type="file" onchange="show3(this)" name="medical_certificate" style="width:120px;">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="col-lg-4">
+                                    <table class="table table-bordered" style="margin-bottom:0px;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label>Guardian Photo</label>
+                                                    <div class="std_images"> <img style="width: 150px;height: 150px;;" src="{% static 'school/images/blank_image.jpg ' %}" alt="" id="meImage4"></div>
+                                                    <input type="file" onchange="show4(this)" name="guardian_photo"  style="width:120px;">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1">
+
+            </div>
+        </div>
+    </div>
+
+{% comment %} Instant Image show  {% endcomment %}
+    <script type="text/javascript">
+       function show6(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+        }
+       function show1(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage1').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+        }
+
+       function show2(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage2').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+
+       function show3(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage3').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+       function show4(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage4').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+
+       // Display a text box when dropdown list says Other 
+       function show(el, txt){
+            var elem = document.getElementById(el);
+            elem.style.visibility = (txt == 'Nine') ? 'visible' : 'hidden';
+        }
+
+        $(document).ready(function(){
+            $("#test").click(function(){
+                $("#bar").remove(".test");
+            });
+        });
+   </script>
+
+{% endblock %}

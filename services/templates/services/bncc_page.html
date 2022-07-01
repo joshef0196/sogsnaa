@@ -1,0 +1,40 @@
+{% extends 'services/base.html' %}
+{% block title %} BNCC {% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    #owl-demo .item{
+        margin: 3px;
+        }
+        #owl-demo .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+        }
+</style>
+<div class="single_page_bg">
+    <div class="container">
+        <div class="row">
+            <div class="facility_page_content">
+                <img src="/static/school/media/{{ bncc_page.facility_images }}" alt=""> 
+                <h3>{{ bncc_page.facility_title }}</h3>
+                <hr>
+                {{ bncc_page.details|safe }}
+            </div>
+           {% if hostel_image %}
+            <div class="facility_gallery">
+                <h3>BNCC Gallery</h3>
+                <div id="owl-demo" class="owl-carousel owl-theme">
+                    {% for data in bncc_page_image %}
+                    <div class="item gallery_images_for_facility"> 
+                        <img src="/static/school/media/{{ data.gallery_images }}" alt="{{ data.gallery_title }}"/> 
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %} 

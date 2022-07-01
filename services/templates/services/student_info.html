@@ -1,0 +1,69 @@
+{% extends 'services/base.html' %}
+{% block title %} Student Information  {% endblock %}
+{% load static %}
+{% block content %}
+<div class="single_page_bg">
+    <!-- Section: inner-header -->
+     <section class="inner-header divider layer-overlay overlay-theme-colored-7"  style="background-image: url(/static/school/images/background.png);">
+        <div class="container">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="text-theme-colored2 font-36">All Member</h1>
+                        <ol class="breadcrumb text-left mt-10 white">
+                            <li><a href="/">Home</a></li>
+                            <li class="active">Student Information</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<div class="container">
+    <div class="row">
+     {% for data in student_info %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="our-team">
+            <div class="picture">
+                <img style="width: 130px;height: 130px;" class="img-fluid" src="/static/services/media/{{ data.info_image }}">
+            </div>
+            <div class="team-content">
+                <h3 class="name">{{ data.name }}</h3>
+                <h4 class="title">{{data.qualification}}</h4>
+            </div>
+            <ul class="social">
+                <li><a href="#" class="fa fa-facebook" aria-hidden="true"></a></li>
+                <li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
+                <li><a href="#" class="fa fa-google-plus" aria-hidden="true"></a></li>
+                <li><a href="#" class="fa fa-linkedin" aria-hidden="true"></a></li>
+            </ul>
+            </div>
+        </div>
+     {% endfor %}     
+    </div>
+  </div>
+
+
+
+{% comment %} <div class="single_page_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="teacher_title"> Photo Gallery</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for data in gallery_list %}
+            <div class="col-sm-4">
+               <div class="photo_gallery">
+                   <img src="/static/school/media/{{ data.gallery_images }}" alt="">
+                   <h4>{{ data.gallery_title }}</h4>
+               </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div> {% endcomment %}
+
+{% endblock %} 

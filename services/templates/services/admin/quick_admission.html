@@ -1,0 +1,202 @@
+{% extends 'school/admin/base.html' %}
+{% block title %}Quick Registration{% endblock %}
+{% load staticfiles %}
+{% block content %}
+<style>
+    #meImage {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage1 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage2 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage3 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage4 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+</style>
+    <!-- Container Fluid-->
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Quick Registration</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Quick Registration</li>
+            </ol>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {% if message.tags %} <h5><i class="icon fa fa-check"></i> {{ message }}</h5>{% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="row">
+            <div class="col-lg-10">
+                <!-- Form Basic -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form method="POST"> {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail1">Student Name</label>
+                                        <input type="text" name="student_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail1">Father Name</label>
+                                        <input type="text" name="father_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail1">Mother Name</label>
+                                        <input type="text" name="mother_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Class</label>
+                                        <select class="form-control" name="class_for" required="">
+                                            <option value="0">Select Group</option>
+                                            <option value="1">প্রথম শ্রেণী</option>
+                                            <option value="2">দ্বিতীয় শ্রেণী</option>
+                                            <option value="3">তৃতীয় শ্রেণী</option>
+                                            <option value="4">চতুর্থ শ্রেণী</option>
+                                            <option value="5">পঞ্চম শ্রেণী</option>
+                                            <option value="6">ষষ্ঠ শ্রেণী</option>
+                                            <option value="7">সপ্তম শ্রেণী</option>
+                                            <option value="8">অষ্টম শ্রেণী</option>
+                                            <option value="9">নবম শ্রেণী</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Group</label>
+                                        <select class="form-control" name="group_for" id="exampleFormControlSelect1">
+                                            <option value="0">Select Group</option>
+                                            <option value="1">Science</option>
+                                            <option value="2">Business</option>
+                                            <option value="3">Humanities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mobile</label>
+                                        <input type="text" name="phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-4">                                        
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Address</label>
+                                        <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="2" ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1">
+
+            </div>
+        </div>
+    </div>
+
+{% comment %} Instant Image show  {% endcomment %}
+    <script type="text/javascript">
+       function show(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+
+       function show1(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage1').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+
+       function show2(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage2').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+
+       function show3(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage3').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+       function show4(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage4').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+   </script>
+{% endblock %}

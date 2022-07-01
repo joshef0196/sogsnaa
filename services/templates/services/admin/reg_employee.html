@@ -1,0 +1,338 @@
+{% extends 'school/admin/base.html' %}
+{% block title %}Employee Registration{% endblock %}
+{% load staticfiles %}
+{% block content %}
+<style>
+    #meImage {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage1 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage2 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage3 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    #meImage4 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+</style>
+    <!-- Container Fluid-->
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Employee Registration</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Employee Registration</li>
+        </ol>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-11">
+                <!-- Form Basic -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Employee ID</label>
+                                        <input type="text" class="form-control" name="employee_id" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Last Id: {{last_employee_id.employee_id}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Employee Name</label>
+                                        <input type="text" name="employee_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Short Name</label>
+                                        <input type="text" name="short_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <table class="table table-bordered" style="margin-bottom:0px;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label>Employee Photo</label>
+                                                    <div class="std_images"> <img style="width: 150px;height: 150px;;" src="{% static 'school/images/blank_image.jpg ' %}" alt="" id="meImage"></div>
+                                                    <input type="file" onchange="show(this)" name="emp_img" id="id_student_img" style="width:120px;overflow: hidden;">
+                                                </td>
+                                                <td>
+                                                    <label>Medical Certificate</label>
+                                                    <div class="std_images"> <img style="width: 150px;height: 150px;;" src="{% static 'school/images/blank_image.jpg ' %}" alt="" id="meImage1"></div>
+                                                    <input type="file" onchange="show1(this)" name="medical_certificate" id="id_father_photo" style="width:120px;overflow: hidden;">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Password</label>
+                                        <input type="password" name="emp_password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Father Name</label>
+                                        <input type="text" name="father_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mother Name</label>
+                                        <input type="text" name="mother_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Designation</label>
+                                        <select class="form-control" name="desig_name" id="exampleFormControlSelect1" required>
+                                            <option value="1">Principal</option>
+                                            <option value="2">Employee</option>
+                                            <option value="3">IT Officer</option>
+                                            <option value="4">Vice Principal</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Qualification</label>
+                                        <input type="text" name="qualification" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Gender</label>
+                                        <select class="form-control" name="emp_gender" id="exampleFormControlSelect1" required>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                            <option value="3">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Religion</label>
+                                        <select class="form-control" name="emp_religion" id="exampleFormControlSelect1" required>
+                                            <option value="1">Islam</option>
+                                            <option value="2">Christianity</option>
+                                            <option value="3">Hinduism</option>
+                                            <option value="4">Buddhism</option>
+                                            <option value="5">Chinese traditional religion</option>
+                                            <option value="6">African traditional religions</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Blood Group</label>
+                                        <select class="form-control" name="blood_group" id="exampleFormControlSelect1">
+                                            <option value="1">N/A</option>
+                                            <option value="2">A+</option>
+                                            <option value="3">A-</option>
+                                            <option value="4">B+</option>
+                                            <option value="5">B-</option>
+                                            <option value="6">AB+</option>
+                                            <option value="7">AB-</option>
+                                            <option value="8">O+</option>
+                                            <option value="9">O-</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Department Name</label>
+                                        <select class="form-control" name="dpt_name" id="exampleFormControlSelect1" required>
+                                            {% for data in department_list %}
+                                                <option value="{{ data.id }}">{{ data.dpt_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mobile</label>
+                                        <input type="text" name="emp_mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" name="email_address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-4"> 
+                                    <div class="form-group" id="simple-date1">
+                                        <label for="simpleDataInput">Join Date</label>
+                                        <div class="input-group date">
+                                            <input type="date" name="join_date" class="form-control" value="{% now "Y-m-d" %}" id="simpleDataInput">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group" id="simple-date1">
+                                        <label for="simpleDataInput">Date Of Birth</label>
+                                        <div class="input-group date">
+                                            <input type="date" name="date_of_birth" class="form-control" value="01/06/2020" id="simpleDataInput">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">National ID</label>
+                                        <input type="text" name="national_id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Basic Salary</label>
+                                        <input type="Number" name="basic_salary" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Starting Salary</label>
+                                        <input type="Number" name="starting_salary" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Present Address</label>
+                                        <textarea class="form-control" name="present_address" id="exampleFormControlTextarea1" rows="1" ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Parmanent Address</label>
+                                        <textarea class="form-control" name="permanent_address" id="exampleFormControlTextarea1" rows="2" ></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Fitness Details</label>
+                                        <textarea class="form-control" name="fitness_details" id="exampleFormControlTextarea1" rows="2" ></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="custom-control custom-checkbox">
+                                        </br>
+                                        </br>
+                                        <input type="checkbox" name="is_teacher" class="custom-control-input" id="customCheck2">
+                                        <label class="custom-control-label" for="customCheck2">Is Teacher?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1">
+
+            </div>
+        </div>
+    </div>
+
+{% comment %} Instant Image show  {% endcomment %}
+    <script type="text/javascript">
+       function show(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+
+       function show1(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage1').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+
+       function show2(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage2').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+
+       function show3(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage3').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+       function show4(input) {
+           if (input.files && input.files[0]) {
+               var filerdr = new FileReader();
+               filerdr.onload = function (e) {
+                   $('#meImage4').attr('src', e.target.result);
+               }
+               filerdr.readAsDataURL(input.files[0]);
+           }
+       }
+   </script>
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends 'school/admin/base.html' %}
+{% block title %}Exam Mark Entry{% endblock %}
+{% load staticfiles %}
+{% block content %}
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <h1 class="h3 mb-0 text-gray-800"></h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Exam Mark Entry</li>
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-lg-10">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {% if message.tags %} <h5><i class="icon fa fa-check"></i> {{ message }}</h5>{% endif %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="card mb-4">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold ">Exam Mark Entry</h6>
+                            </div>                              
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card-header flex-row justify-content-between" style="text-align: right;">
+                                <i class="fas fa-hand-point-right"></i> <a class="collapse-item" href="/mark-distribution-list/">Mark Distribution List</a>
+                            </div>  
+                            
+                        </div>
+                    </div>
+                <!-- Form Basic -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form method="POST"> {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Student</label>
+                                        <select class="form-control" id="category_id" name="student" required>
+                                            {% for data in student %}
+                                                <option value="{{ data.id }}">{{ data.st_first_name }}({{data.student_id}})</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Class</label>
+                                        <select class="form-control" name="class_name" required>
+                                            {% for data in class_list %}
+                                                <option value="{{ data.id }}">{{ data.class_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Shift</label>
+                                        <select class="form-control" name="shift_name" required>
+                                            {% for data in shift_list %}
+                                                <option value="{{ data.id }}">{{ data.shift_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Bangla</label>
+                                        <input type="number" name="bangla"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Bangla 2nd</label>
+                                        <input type="number" name="bangla_2nd"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">English</label>
+                                        <input type="number" name="english"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">English 2nd</label>
+                                        <input type="number" name="english_2nd"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mathematics</label>
+                                        <input type="number" name="mathematics" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">General Science</label>
+                                        <input type="number" name="general_science"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Bangladesh Global Studies</label>
+                                        <input type="number" name="bangladesh_global_studies"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Islamic Studies</label>
+                                        <input type="number" name="islamic_studies"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Hindu Studies</label>
+                                        <input type="number" name="hindu_studies"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">ICT</label>
+                                        <input type="number" name="ict" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Agriculture Studies</label>
+                                        <input type="number" name="agriculture_studies"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Set Mark</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

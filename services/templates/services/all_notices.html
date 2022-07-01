@@ -1,0 +1,40 @@
+{% extends 'services/base.html' %}
+{% block title %} All Notice  {% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="single_page_bg">
+    <div class="container">
+        <div class="row">
+            <h3>  All Notices </h3>
+        </div>
+        <div class="row">
+            
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>SL</th>
+                    <th>Title</th>
+                    <th style="width:150px;">Publish Date</th>
+                    <th style="width:270px;text-align:center">Action</th>
+                </tr>
+                {% for data in all_noties %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ data.title }}</td>
+                    <td>{{ data.upload_date }}</td>
+                    <td>
+                        <a href="/notice/{{ data.pk }}/view/" class="btn btn-info">Read Notice</a>
+                        {% if data.notice_file  %}
+                        <a href="/static/services/media/{{ data.notice_file }}" class="btn btn-warning" target="_blank"> <i class="fa fa-download"></i> Download</a>
+                        {% else %}
+                        <a href="#" class="btn btn-default"> No File</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 

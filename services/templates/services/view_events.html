@@ -1,0 +1,18 @@
+{% extends 'services/base.html' %}
+{% block title %} View Events  {% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="single_page_bg">
+    <div class="container">
+        <div class="row">
+            <div class="view_single_page">
+                <h3>{{ view_events.title }}</h3>
+                <hr>
+                {{ view_events.details|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 

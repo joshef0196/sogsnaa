@@ -1,0 +1,31 @@
+{% extends 'services/base.html' %}
+{% block title %} Institute Facilities {% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="single_page_bg">
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="choose_title">Our Facilities</h3>
+                </div>
+            </div>
+            <div class="row">
+                {% for data in activities_list %}
+                <div class="col-sm-3 active_item">
+                    <div class="activities_item">
+                        <h5><i class="{{ data.icon }}"></i></h5>
+                        <h3>{{ data.activites_name }}</h3>
+                        {{ data.details|safe|slice:"80" }}
+                        <h6><a href="" class="btn btn-danger">Read more...</a></h6>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 

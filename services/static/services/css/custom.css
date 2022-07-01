@@ -1,0 +1,99 @@
+.education_panel{
+	width:750px;
+	margin:0 auto;
+	border:1px solid #ccc;
+	overflow:hidden;
+}
+.row{
+	width:100%;
+	overflow:hidden;
+	margin: 0px;
+    padding: 0px;
+}
+.content_text{
+	width:300px;
+	overflow:hidden;
+	border:1px solid #ccc;
+	margin-left:10px;
+	padding:10px;
+	float:left;
+}
+
+.sidebar_boder{
+	width:4px;
+	height:90px;
+	background:#333;
+	float:left;
+	margin-left:30px;
+	position:relative;
+}
+.icon_class {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    position: absolute;
+    float: left;
+    margin-top: 21px;
+    margin-left: -23px;
+}
+.icon_class h3{
+	color:#fff;
+	text-align:center;
+}
+
+.sidebar_boder_blunk {
+    width: 300px;
+    height: 90px;
+    float: left;
+    margin-left: 30px;
+}
+
+.sidebar_boder_blunk2 {
+    width: 322px;
+    height: 90px;
+    float: left;
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 0px;
+	overflow:hidden;
+}
+
+
+.sidebar_boder1{
+	width:4px;
+	height:90px;
+	background:#333;
+	float:left;
+	margin-left:30px;
+	position:relative;
+}
+.icon_class1 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    position: absolute;
+    float: left;
+    margin-top: 21px;
+    margin-left: -23px;
+}
+.icon_class1 h3{
+	color:#fff;
+	text-align:center;
+}
+
+.content_text1 {
+    width: 300px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    margin-left: 29px;
+    float: left;
+    padding: 10px;
+}
+
+
+
+

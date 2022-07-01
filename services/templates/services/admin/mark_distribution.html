@@ -1,0 +1,103 @@
+{% extends 'school/admin/base.html' %}
+{% block title %}Add Mark Distribution{% endblock %}
+{% load staticfiles %}
+{% block content %}
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <h1 class="h3 mb-0 text-gray-800"></h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Mark Distribution</li>
+            </ol>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {% if message.tags %} <h5><i class="icon fa fa-check"></i> {{ message }}</h5>{% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="card mb-4">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold ">Add Mark Distribution</h6>
+                            </div>                              
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card-header flex-row justify-content-between" style="text-align: right;">
+                                <i class="fas fa-hand-point-right"></i> <a class="collapse-item" href="/mark-distribution-list/">Mark Distribution List</a>
+                            </div>  
+                            
+                        </div>
+                    </div>
+                <!-- Form Basic -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form method="POST"> {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Class</label>
+                                        <select class="form-control" name="class_name" required>
+                                            {% for data in class_list %}
+                                                <option value="{{ data.id }}">{{ data.class_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Subject</label>
+                                        <select class="form-control" name="class_subject" required>
+                                            {% for data in class_subject %}
+                                                <option value="{{ data.id }}">{{ data.sub_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">                                     
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Mark Type</label>
+                                        <select class="form-control" name="mark_type" required>
+                                            <option value="1">Written</option>
+                                            <option value="2">MCQ</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Total Mark</label>
+                                        <input type="text" name="total_mark" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">                                     
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Pass Mark</label>
+                                        <input type="text" name="pass_mark" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Mark Distribution</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'services/base.html' %}
+{% block title %}  All Events  {% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="single_page_bg">
+    <div class="container">
+        <div class="row">
+            <h3>  All Events </h3>
+        </div>
+        <div class="row">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>SL</th>
+                    <th>Title</th>
+                    <th style="width:150px;">Publish Date</th>
+                    <th style="width:150px;">Action</th>
+                </tr>
+                {% for data in event_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ data.title }}</td>
+                    <td>{{ data.upload_date }}</td>
+                    <td><a href="/events/{{ data.pk }}/view/" class="btn btn-info">Read Notice</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 

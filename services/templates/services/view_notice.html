@@ -1,0 +1,23 @@
+{% extends 'services/base.html' %}
+{% block title %} View Notice  {% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="single_page_bg">
+    <div class="container">
+        <div class="row">
+            <div class="view_single_page">
+                <h3 style="float:left;margin-right:20px;">{{ view_notices.title }}</h3> 
+                {% if view_notices.notice_file  %}
+                <a href="/static/services/media/{{ data.notice_file }}" class="btn btn-warning" target="_blank"> <i class="fa fa-download"></i> Download</a>
+                {% else %}
+                <a href="#" class="btn btn-default"> No File</a>
+                {% endif %}
+                <hr>
+                {{ view_notices.details|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 

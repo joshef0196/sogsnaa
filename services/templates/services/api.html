@@ -1,0 +1,13 @@
+{% extends 'school/base.html' %}
+{% block title %} API {% endblock %}
+{% load static %}
+{% block content %}
+<div class="single_page_bg">
+    {% for data in api %}
+        <p>{{data.userId }}</p>
+        <p>{{data.id }}</p>
+        <p>{{data.title }}</p>
+        <p>{{data.body }}</p>
+    {% endfor %}
+</div>
+{% endblock %}

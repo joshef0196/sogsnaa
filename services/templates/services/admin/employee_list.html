@@ -1,0 +1,102 @@
+{% extends 'services/admin/base.html' %}
+{% load static %}
+{% block content %}
+
+<div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">    
+        <div class="container-fluid" id="container-wrapper">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800"></h1>
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/employee-registration/">Add Employee</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Employee List</li>
+                </ol>
+            </div>
+
+            <!-- Row -->
+            <div class="row">
+                <!-- DataTable with Hover -->
+                <div class="col-lg-12">
+                    <div class="card mb-4">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold ">Employee List</h6>
+                                </div>                              
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card-header flex-row justify-content-between" style="text-align: right;">
+                                    <i class="fas fa-hand-point-right"></i> <a class="collapse-item" href="/employee-registration/">Employee Registration</a>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="table-responsive p-3">
+                            <table class="table align-items-center table-flush table-hover" id="dataTableHover">
+                                <thead class="thead-light">
+                                    <tr style="font-size:13px;">
+                                        <th>Employee Name</th>
+                                        <th>Email address</th> 
+                                        <th>Designation</th>
+                                        <th>Gender</th>
+                                        <th>Moblile</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="font-size: 13px;color: black;">
+                                    {% for data in employee_list %}
+                                        <tr>
+                                            <td>{{data.register_name}}</td>
+                                            <td>{{data.email}}</td>
+                                            <td>{{data.designation}}</td>
+                                            <td>{{data.gender}}</td>
+                                            <td>{{data.mobile}}</td>
+
+                                            <td>
+                                                {% if data.status %}
+                                                    <p>Active</p>
+                                                {% else %}
+                                                    <p style="color:red;">Inactive</p>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if data.status %}
+                                                    <p >Active</p>
+                                                {% else %}
+                                                    <p style="color:red;">Inactive</p>
+                                                {% endif %}
+                                            </td>
+                                            
+                                            <td>
+                                                <a href="/employeeapp/employee/523/edit-employee/" class="btn btn-default btn-sm listbtn"><i class="fas fa-edit"></i></a> 
+                                                <a href="/remove-employee/{{data.id}}" onclick="return confirm('Are you sure to delete this Employee?')" class="btn btn-default btn-sm listbtn"><i class="far fa-trash-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Scroll to top -->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<script src="{% static 'school/admin/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'school/admin/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'school/admin/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+<!-- Page level custom scripts -->
+<script>
+    $(document).ready(function () {
+        $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'services/base.html' %}
+{% block title %}Search Result{% endblock %}
+{% load static %}
+{% block content %}
+<div class="single_page_bg">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider layer-overlay overlay-theme-colored-7"  style="background-image: url(/static/school/images/background.png);">
+        <div class="container">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="text-theme-colored2 font-36">Search Result</h1>
+                        <ol class="breadcrumb text-left mt-10 white">
+                            <li><a href="/">Home</a></li>
+                            <li class="active">Search Result</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </br>
+    
+    <form method="POST">{% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-2">
+
+            </div>
+            <div class="form-group col-md-2">
+                <input type="number" class="form-control" name="roll" value="{{roll}}" id="inputEmail4" placeholder="Enter Your Roll" required>
+            </div>
+            <div class="form-group col-md-2">
+                <select id="inputState" class="form-control" name="class">
+                    {% for data in class_list  %}
+                        <option value="{{data.id}}" {% if class_obj == data.id %}selected{% endif %} required>{{data.class_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <select id="inputState" class="form-control" name="year">
+                    {% for data in year_list  %}
+                        <option value="{{data.id}}" {% if year == data.id %}selected{% endif %} required>{{data.year}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-md-1">
+                <label for="inputState"></label>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+            <div class="form-group col-md-2">
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <p style="color:red; background:white;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+    
+    </br>
+{% if  result%}
+    <div class="form-row">
+        <div class="form-group col-md-1">
+        </div>
+        <div class="form-group col-md-10">
+            <table width="100%" style="margin-top:10px;padding-top:3px;boder: 1px solid #ccc; font-size:13px;">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;"> Name : {{ result.student.st_first_name }} {{ result.student.st_last_name }}</th>
+                        <th style="text-align:left;"> Class : {{ class_obj}}</th>
+                        <th style="text-align:left;padding-left:3px;"> Roll : {{ roll }}</th>
+                        <th style="text-align:left;padding-left:3px;"> Reg. : {{ result.student.st_reg }}</th>
+                        <th style="text-align:left;padding-left:3px;"> Year : {{ result.student.running_year }}</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="form-group col-md-1">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-1">
+        </div>
+
+        <div class="form-group col-md-10">
+            <table class="table table-bordered" style="background: white;">
+                <thead>
+                    <tr style="font-size:12px;">
+                        <th scope="col">Bangla</th>
+                        <th scope="col">Bangla 2nd</th>
+                        <th scope="col">English</th>
+                        <th scope="col">English 2nd</th>
+                        <th scope="col">Mathematics</th>
+                        <th scope="col">General Science</th>
+                        <th scope="col">Bangladesh Global Studies</th>
+                        <th scope="col">Islamic Studies</th>
+                        <th scope="col">Hindu Studies</th>
+                        <th scope="col">ICT</th>
+                        <th scope="col">Agriculture Studies</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{result.bangla}}</td>
+                        <td>{{result.bangla_2nd}}</td>
+                        <td>{{result.english}}</td>
+                        <td>{{result.english_2nd}}</td>
+                        <td>{{result.mathematics}}</td>
+                        <td>{{result.general_science}}</td>
+                        <td>{{result.bangladesh_global_studies}}</td>
+                        <td>{{result.islamic_studies}}</td>
+                        <td>{{result.hindu_studies}}</td>
+                        <td>{{result.ict}}</td>
+                        <td>{{result.agriculture_studies}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group col-md-1">
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'services/base.html' %}
+{% block title %}About School {% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="single_page_bg">
+    <!-- Section: inner-header -->
+     <section class="inner-header divider layer-overlay overlay-theme-colored-7"  style="background-image: url(/static/school/images/background.png);">
+        <div class="container">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="text-theme-colored2 font-36">About Schoool</h1>
+                        <ol class="breadcrumb text-left mt-10 white">
+                            <li><a href="/">Home</a></li>
+                            <li class="active">About Schoool</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: About -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 messege">
+                    {% comment %} <img class="pull-left flip mr-15 thumbnail" src="/static/school/media/{{ chairman.persion_images }}" alt="No Image"> {% endcomment %}
+                    {{ about_school.details|safe }}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %} 
