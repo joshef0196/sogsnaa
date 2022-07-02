@@ -9,11 +9,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="{% static 'school/media/images/company_info/logo_nKMaIiI.png' %}" rel="icon">
-    <link href="{% static 'school/admin/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'school/admin/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'school/admin/css/ruang-admin.min.css' %}" rel="stylesheet">
-    <link href="{% static 'school/admin/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+    <link href="{% static 'services/media/images/company_info/logo_nKMaIiI.png' %}" rel="icon">
+    <link href="{% static 'services/admin/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'services/admin/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'services/admin/css/ruang-admin.min.css' %}" rel="stylesheet">
+    <link href="{% static 'services/admin/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -22,7 +22,7 @@
         <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard/">
             <div class="sidebar-brand-icon">
-            <img src="{% static 'school/media/images/company_info/logo_nKMaIiI.png' %}">
+            <img src="{% static 'services/media/images/company_info/logo_nKMaIiI.png' %}">
             </div>
             {% comment %} <div class="sidebar-brand-text mx-3">Bright Star School</div> {% endcomment %}
         </a>
@@ -42,7 +42,7 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#studentBootstrap"
             aria-expanded="true" aria-controls="studentBootstrap">
             <i class="fas fa-graduation-cap"></i>
-            <span>Student</span>
+            <span>School Info</span>
             </a>
             <div id="studentBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -51,43 +51,36 @@
                 <a class="collapse-item" href="/quick-admission-list/">Quick Admission List</a>
                 <a class="collapse-item" href="/student-list/">Student List</a>
                 <a class="collapse-item" href="/student-photos-list/">Student Photo List</a>
-                <a class="collapse-item" href="/parents-list/">Parents List</a>
-                <a class="collapse-item" href="/parents-photos-list/">Parents Photo List</a>
-                <a class="collapse-item" href="/guardian-list/">Guardian List</a>
-                <a class="collapse-item" href="/guardian-photo-list/">Guardian Photo List</a>
-                <a class="collapse-item" href="/scholarship-student-list/">Scholarship Student List</a>
+                <a class="collapse-item" href="/student-list/">Teacher List</a>
+                <a class="collapse-item" href="/student-photos-list/">Teacher Photo List</a>
                 <a class="collapse-item" href="/inactive-student-list/">Inactive Student List</a>
             </div>
             </div>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
-            aria-expanded="true" aria-controls="collapseBootstrap">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#associations"
+            aria-expanded="true" aria-controls="associations">
             <i class="far fa-user"></i>
-            <span>Employee</span>
+            <span>Associations Info</span>
             </a>
-            <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div id="associations" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/employee-registration/">Employee Registration</a>
-                    <a class="collapse-item" href="/employee-list/">Employee List</a>
-                    <a class="collapse-item" href="/add-class-teacher/">Add Class Teacher</a>
+                    <a class="collapse-item" href="/employee-registration/">Member Registration</a>
+                    <a class="collapse-item" href="/add-class-teacher/">Committee Registration</a>
                     <a class="collapse-item" href="/teacher-list/">Teacher List</a>
                 </div>
             </div>
         </li>
-
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#result"
-            aria-expanded="true" aria-controls="collapseBootstrap">
-            <i class="fab fa-gg"></i>
-            <span>Result</span>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#website"
+            aria-expanded="true" aria-controls="website">
+            <i class="far fa-user"></i>
+            <span>Manage Website</span>
             </a>
-            <div id="result" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div id="website" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/mark-distribution/">Mark Distribution</a>
-                    <a class="collapse-item" href="/mark-distribution-list/">Mark Distribution List</a>
-                    <a class="collapse-item" href="/student-exam-marks-entry/">Exam Marks Entry</a>
+                    <a class="collapse-item" href="/employee-registration/">Employee Registration</a>
                 </div>
             </div>
         </li>
@@ -99,7 +92,8 @@
             </a>
             <div id="report" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/class-wise-report/">Class Wise Report</a>
+                <a class="collapse-item" href="/class-wise-report/">My Subscriptions</a>
+                <a class="collapse-item" href="/class-wise-report/">Estimate</a>
             </div>
             </div>
         </li>
@@ -204,7 +198,7 @@
 
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="img-profile rounded-circle" src="{% static 'school/admin/img/boy.png' %}" style="max-width: 60px">
+                            <img class="img-profile rounded-circle" src="{% static 'services/admin/img/boy.png' %}" style="max-width: 60px">
                             <span class="ml-2 d-none d-lg-inline text-white small">Admin</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -267,25 +261,25 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-    <script src="{% static 'school/admin/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'school/admin/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'school/admin/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-    <script src="{% static 'school/admin/js/ruang-admin.min.js' %}"></script>
-    <script src="{% static 'school/admin/vendor/chart.js/Chart.min.js' %}"></script>
-    <script src="{% static 'school/admin/js/demo/chart-area-demo.js' %}"></script>  
+    <script src="{% static 'services/admin/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'services/admin/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'services/admin/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'services/admin/js/ruang-admin.min.js' %}"></script>
+    <script src="{% static 'services/admin/vendor/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'services/admin/js/demo/chart-area-demo.js' %}"></script>  
 
     <!-- Page level plugins -->
-    <script src="{% static 'school/admin/vendor/datatables/jquery.dataTables.js' %}"></script>
-    <script src="{% static 'school/admin/vendor/datatables/dataTables.bootstrap4.js' %}"></script>
+    <script src="{% static 'services/admin/vendor/datatables/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'services/admin/vendor/datatables/dataTables.bootstrap4.js' %}"></script>
 
     <!-- Bootstrap Datepicker -->
-    <script src="{% static 'school/admin/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'services/admin/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
     <!-- Bootstrap Touchspin -->
-    <script src="{% static 'school/admin/vendor/bootstrap-touchspin/js/jquery.bootstrap-touchspin.js' %}"></script>
+    <script src="{% static 'services/admin/vendor/bootstrap-touchspin/js/jquery.bootstrap-touchspin.js' %}"></script>
     <!-- ClockPicker -->
-    <script src="{% static 'school/admin/vendor/clock-picker/clockpicker.js' %}"></script>
+    <script src="{% static 'services/admin/vendor/clock-picker/clockpicker.js' %}"></script>
 
-    <script src="{% static 'school/admin/vendor/select2/dist/js/select2.min.js' %}"></script>
+    <script src="{% static 'services/admin/vendor/select2/dist/js/select2.min.js' %}"></script>
 
 </body>
 {% endfor %}
